@@ -1,0 +1,25 @@
+  /*
+    val clientId = ""
+    val clientSecret = ""
+    val tenantId = ""
+    val path = "hotels"
+    val storageAccount = ""
+    val blob = ""
+
+    val spark = SparkSession.builder()
+      .appName("ReadFromADLSGen2")
+      .master("local[*]")
+      .config(s"fs.azure.account.auth.type.$storageAccount.dfs.core.windows.net", "OAuth") // Oauth
+      .config(s"fs.azure.account.oauth.provider.type.$storageAccount.dfs.core.windows.net",
+        "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider") // client provider
+      .config(s"fs.azure.account.oauth2.client.id.$storageAccount.dfs.core.windows.net", clientId) //clientId
+      .config(s"fs.azure.account.oauth2.client.secret.$storageAccount.dfs.core.windows.net", clientSecret) //clientSecret
+      .config(s"fs.azure.account.oauth2.client.endpoint.$storageAccount.dfs.core.windows.net", s"https://login.microsoftonline.com/$tenantId/oauth2/token")
+      .getOrCreate()
+
+    val df = spark.read.format("csv")
+      .option("header", "true")
+      .load(s"abfss://$blob@$storageAccount.dfs.core.windows.net/$path")
+
+    df.show()
+    */
